@@ -43,8 +43,7 @@ final class RestaurantListViewModel {
             case .failure(let error):
                 self?.navigationDelegate?.show(error)
             case .success(let restaurants):
-                self?.restaurants = restaurants
-                self?.prepareCellViewModel(from: restaurants)
+                self?.handleRestaurantResponse(restaurants)
             }
         }
     }
@@ -76,9 +75,15 @@ final class RestaurantListViewModel {
     }
     
     // MARK: - Private methods
+    
+    private func handleRestaurantResponse(_ response: [Restaurant]) {
+        restaurants = response.sorted(by: { $0.status > $1.status } )
+        prepareCellViewModels(from: restaurants)
+    }
+    
     /// Create list of table cell view models from the list of restaurants
     /// - Parameter restaurants: List of restaurants from which table cell view models will be created
-    private func prepareCellViewModel(from restaurants: [Restaurant]) {
+    private func prepareCellViewModels(from restaurants: [Restaurant]) {
         var cellModels = [RestaurantListTableCellViewModel]()
         for aRestaurant in restaurants {
             cellModels.append(makeCellViewModel(with: aRestaurant))
@@ -102,13 +107,13 @@ final class RestaurantListViewModel {
     /// - Parameter name: Name for which we need to filter the restaurant list
     private func filterRestaurantList(for name: String) {
         guard !name.isEmpty else {
-            self.prepareCellViewModel(from: restaurants)
+            self.prepareCellViewModels(from: restaurants)
             return
         }
         
         let filtered = restaurants.filter({
             $0.name.lowercased().contains(name.lowercased())
         })
-        self.prepareCellViewModel(from: filtered)
+        self.prepareCellViewModels(from: filtered)
     }
 }

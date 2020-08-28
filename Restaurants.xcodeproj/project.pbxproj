@@ -42,6 +42,7 @@
 		8D3B270A24F48508006990A0 /* Restaurant+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B270924F48508006990A0 /* Restaurant+Mock.swift */; };
 		8D3B270C24F4858E006990A0 /* SortingValues+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B270B24F4858E006990A0 /* SortingValues+Mock.swift */; };
 		8D3B270E24F48718006990A0 /* RestaurantsResponse+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B270D24F48718006990A0 /* RestaurantsResponse+Mock.swift */; };
+		8D3CB86A24F9B91C0038A654 /* StatusSortingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3CB86924F9B91C0038A654 /* StatusSortingTests.swift */; };
 		8D7E0A6324F5B6AD003EF112 /* RestaurantListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7E0A6224F5B6AD003EF112 /* RestaurantListViewModelTests.swift */; };
 		8D7E0A6524F5B75A003EF112 /* RestaurantListApiProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7E0A6424F5B75A003EF112 /* RestaurantListApiProviderMock.swift */; };
 		8DFDF09B24F5ADBB00179A8C /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDF09A24F5ADBB00179A8C /* AppCoordinatorTests.swift */; };
@@ -102,6 +103,7 @@
 		8D3B270924F48508006990A0 /* Restaurant+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+Mock.swift"; sourceTree = "<group>"; };
 		8D3B270B24F4858E006990A0 /* SortingValues+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SortingValues+Mock.swift"; sourceTree = "<group>"; };
 		8D3B270D24F48718006990A0 /* RestaurantsResponse+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestaurantsResponse+Mock.swift"; sourceTree = "<group>"; };
+		8D3CB86924F9B91C0038A654 /* StatusSortingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSortingTests.swift; sourceTree = "<group>"; };
 		8D7E0A6224F5B6AD003EF112 /* RestaurantListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewModelTests.swift; sourceTree = "<group>"; };
 		8D7E0A6424F5B75A003EF112 /* RestaurantListApiProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListApiProviderMock.swift; sourceTree = "<group>"; };
 		8DFDF09A24F5ADBB00179A8C /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		8D075DA324F47F6600AC2F9C /* RestaurantsTests */ = {
 			isa = PBXGroup;
 			children = (
+				8D3CB86824F9B8950038A654 /* StatusSortingTests */,
 				8D3B270424F48234006990A0 /* Mocks */,
 				8DFDF09924F5ADAB00179A8C /* AppCoordinatorTests */,
 				8DFDF09C24F5AFEE00179A8C /* DataProviderTests */,
@@ -346,6 +349,14 @@
 				8D3B270D24F48718006990A0 /* RestaurantsResponse+Mock.swift */,
 			);
 			path = ModelMocks;
+			sourceTree = "<group>";
+		};
+		8D3CB86824F9B8950038A654 /* StatusSortingTests */ = {
+			isa = PBXGroup;
+			children = (
+				8D3CB86924F9B91C0038A654 /* StatusSortingTests.swift */,
+			);
+			path = StatusSortingTests;
 			sourceTree = "<group>";
 		};
 		8DFDF09924F5ADAB00179A8C /* AppCoordinatorTests */ = {
@@ -535,6 +546,7 @@
 				8D3B270E24F48718006990A0 /* RestaurantsResponse+Mock.swift in Sources */,
 				8D3B270A24F48508006990A0 /* Restaurant+Mock.swift in Sources */,
 				8D3B270724F48289006990A0 /* DataProviderMock.swift in Sources */,
+				8D3CB86A24F9B91C0038A654 /* StatusSortingTests.swift in Sources */,
 				8D7E0A6524F5B75A003EF112 /* RestaurantListApiProviderMock.swift in Sources */,
 				8DFDF09B24F5ADBB00179A8C /* AppCoordinatorTests.swift in Sources */,
 			);

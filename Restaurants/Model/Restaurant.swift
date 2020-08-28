@@ -33,3 +33,20 @@ extension Restaurant {
         let minCost: Int
     }
 }
+
+extension Restaurant.Status: Comparable {
+    static func < (lhs: Restaurant.Status, rhs: Restaurant.Status) -> Bool {
+        switch (lhs, rhs) {
+        case (.closed, _):
+            return true
+        case (.orderAhead, .open):
+            return true
+        case (.orderAhead, .closed):
+            return false
+        case (.open, _):
+            return false
+        case (.orderAhead, .orderAhead):
+            return true
+        }
+    }
+}

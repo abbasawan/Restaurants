@@ -52,12 +52,10 @@ final class RestaurantListViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.barTintColor = .taOrange
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        
-        setupSearchController()
-        
-        definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
-        
+        definesPresentationContext = true
+
+        setupSearchController()
         setupTableView()
     }
     
