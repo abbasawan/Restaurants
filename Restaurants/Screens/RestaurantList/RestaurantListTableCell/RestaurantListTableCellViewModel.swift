@@ -12,3 +12,5 @@ struct RestaurantListTableCellViewModel {
     let name: String
     let status: String
 }
+
+extension RestaurantListTableCellViewModel: Equatable {}

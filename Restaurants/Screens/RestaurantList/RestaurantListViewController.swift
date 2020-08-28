@@ -9,7 +9,7 @@
 import UIKit
 
 final class RestaurantListViewController: UIViewController {
-
+    
     // MARK: - Public properties
     /// The object that acts as the navigation delegate of login view controller
     public weak var navigationDelegate: RestaurantListViewControllerNavigationDelegate? {
@@ -43,16 +43,30 @@ final class RestaurantListViewController: UIViewController {
         viewModel.viewDidLoad()
         setup()
     }
-
+    
     // MARK: - Private methods
     private func setup() {
+        viewModel.delegate = self
         self.title = viewModel.screenTitle
         
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.barTintColor = .taOrange
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         
+        setupSearchController()
+        
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
         setupTableView()
+    }
+    
+    private func setupSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = viewModel.searchPlaceholderText
+        navigationItem.searchController = searchController
     }
     
     private func setupTableView() {
@@ -97,6 +111,14 @@ extension RestaurantListViewController: RestaurantListViewModelDelegate {
     func shouldReloadData() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
+            self?.tableView.beginUpdates()
+            self?.tableView.endUpdates()
         }
+    }
+}
+
+extension RestaurantListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        viewModel.didChangeSearchBarText(searchController.searchBar.text)
     }
 }
