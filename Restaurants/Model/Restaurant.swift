@@ -34,6 +34,18 @@ extension Restaurant {
     }
 }
 
+extension Restaurant: Comparable {
+    static func == (lhs: Restaurant, rhs: Restaurant) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.name == rhs.name
+    }
+    
+    static func < (lhs: Restaurant, rhs: Restaurant) -> Bool {
+        return (lhs.status, lhs.sortingValues.bestMatch) <
+            (rhs.status, rhs.sortingValues.bestMatch) // TODO: Remove bestMatch hardcoding
+    }
+}
+
 extension Restaurant.Status: Comparable {
     static func < (lhs: Restaurant.Status, rhs: Restaurant.Status) -> Bool {
         switch (lhs, rhs) {

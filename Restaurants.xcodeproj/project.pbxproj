@@ -43,8 +43,11 @@
 		8D3B270C24F4858E006990A0 /* SortingValues+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B270B24F4858E006990A0 /* SortingValues+Mock.swift */; };
 		8D3B270E24F48718006990A0 /* RestaurantsResponse+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B270D24F48718006990A0 /* RestaurantsResponse+Mock.swift */; };
 		8D3CB86A24F9B91C0038A654 /* StatusSortingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3CB86924F9B91C0038A654 /* StatusSortingTests.swift */; };
+		8D692C5A24FAECC7003AADC9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8D692C5924FAECC7003AADC9 /* SnapKit */; };
 		8D7E0A6324F5B6AD003EF112 /* RestaurantListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7E0A6224F5B6AD003EF112 /* RestaurantListViewModelTests.swift */; };
 		8D7E0A6524F5B75A003EF112 /* RestaurantListApiProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7E0A6424F5B75A003EF112 /* RestaurantListApiProviderMock.swift */; };
+		8DB764D324F9C44D00188C59 /* OptionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB764D224F9C44D00188C59 /* OptionPickerView.swift */; };
+		8DB764D524F9C46A00188C59 /* OptionPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB764D424F9C46A00188C59 /* OptionPickerViewModel.swift */; };
 		8DFDF09B24F5ADBB00179A8C /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDF09A24F5ADBB00179A8C /* AppCoordinatorTests.swift */; };
 		8DFDF09E24F5B01800179A8C /* LocalDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDF09D24F5B01800179A8C /* LocalDataProviderTests.swift */; };
 		8DFDF0A124F5B0CA00179A8C /* RestaurantListApiRequestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDF0A024F5B0CA00179A8C /* RestaurantListApiRequestMock.swift */; };
@@ -106,6 +109,8 @@
 		8D3CB86924F9B91C0038A654 /* StatusSortingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSortingTests.swift; sourceTree = "<group>"; };
 		8D7E0A6224F5B6AD003EF112 /* RestaurantListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewModelTests.swift; sourceTree = "<group>"; };
 		8D7E0A6424F5B75A003EF112 /* RestaurantListApiProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListApiProviderMock.swift; sourceTree = "<group>"; };
+		8DB764D224F9C44D00188C59 /* OptionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionPickerView.swift; sourceTree = "<group>"; };
+		8DB764D424F9C46A00188C59 /* OptionPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionPickerViewModel.swift; sourceTree = "<group>"; };
 		8DFDF09A24F5ADBB00179A8C /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		8DFDF09D24F5B01800179A8C /* LocalDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataProviderTests.swift; sourceTree = "<group>"; };
 		8DFDF0A024F5B0CA00179A8C /* RestaurantListApiRequestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListApiRequestMock.swift; sourceTree = "<group>"; };
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D075DF724F47FE500AC2F9C /* Swinject in Frameworks */,
+				8D692C5A24FAECC7003AADC9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +290,7 @@
 		8D075DCF24F47FBE00AC2F9C /* RestaurantList */ = {
 			isa = PBXGroup;
 			children = (
+				8DB764D124F9C42D00188C59 /* OptionPickerView */,
 				8D075DD024F47FBE00AC2F9C /* RestaurantListCoordinator.swift */,
 				8D075DD124F47FBE00AC2F9C /* RestaurantListViewControllerNavigationDelegate.swift */,
 				8D075DD224F47FBE00AC2F9C /* RestaurantListTableCell */,
@@ -359,6 +366,15 @@
 			path = StatusSortingTests;
 			sourceTree = "<group>";
 		};
+		8DB764D124F9C42D00188C59 /* OptionPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				8DB764D224F9C44D00188C59 /* OptionPickerView.swift */,
+				8DB764D424F9C46A00188C59 /* OptionPickerViewModel.swift */,
+			);
+			path = OptionPickerView;
+			sourceTree = "<group>";
+		};
 		8DFDF09924F5ADAB00179A8C /* AppCoordinatorTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +429,7 @@
 			name = Restaurants;
 			packageProductDependencies = (
 				8D075DF624F47FE500AC2F9C /* Swinject */,
+				8D692C5924FAECC7003AADC9 /* SnapKit */,
 			);
 			productName = Restaurants;
 			productReference = 8D075D8A24F47F6500AC2F9C /* Restaurants.app */;
@@ -466,6 +483,7 @@
 			mainGroup = 8D075D8124F47F6500AC2F9C;
 			packageReferences = (
 				8D075DF524F47FE500AC2F9C /* XCRemoteSwiftPackageReference "Swinject" */,
+				8D692C5824FAECC7003AADC9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 8D075D8B24F47F6500AC2F9C /* Products */;
 			projectDirPath = "";
@@ -529,8 +547,10 @@
 				8D075DE724F47FBE00AC2F9C /* String+Util.swift in Sources */,
 				8D075DF324F47FBE00AC2F9C /* RestaurantListViewModel.swift in Sources */,
 				8D075DDA24F47FBE00AC2F9C /* LocalDataProvider.swift in Sources */,
+				8DB764D524F9C46A00188C59 /* OptionPickerViewModel.swift in Sources */,
 				8D075DD924F47FBE00AC2F9C /* DataProvidable.swift in Sources */,
 				8D075DEF24F47FBE00AC2F9C /* RestaurantListTableCell.swift in Sources */,
+				8DB764D324F9C44D00188C59 /* OptionPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,6 +825,14 @@
 				minimumVersion = 2.7.0;
 			};
 		};
+		8D692C5824FAECC7003AADC9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -812,6 +840,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8D075DF524F47FE500AC2F9C /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		8D692C5924FAECC7003AADC9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D692C5824FAECC7003AADC9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

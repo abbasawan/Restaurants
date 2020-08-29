@@ -19,6 +19,16 @@ final class RestaurantListViewModel {
     // MARK: - Public properties
     let screenTitle = "Restaurant List".localized
     let searchPlaceholderText = "Type Restaurant name".localized
+    
+    let sortingOptionsViewModel = OptionPickerViewModel(options: ["Best Match".localized,
+                                                                  "newest".localized,
+                                                                  "ratingAverage".localized,
+                                                                  "distance".localized,
+                                                                  "popularity".localized,
+                                                                  "averageProductPrice".localized,
+                                                                  "deliveryCosts".localized,
+                                                                  "minCost".localized])
+    
     weak var delegate: RestaurantListViewModelDelegate?
     weak var navigationDelegate: RestaurantListViewControllerNavigationDelegate?
     
@@ -72,6 +82,11 @@ final class RestaurantListViewModel {
     func didSelectRow(at indexPath: IndexPath) {
         // TODO: Show details
         // navigationDelegate?.showDetails(for: restaurants[indexPath.row])
+    }
+    
+    func didSelectSortOption() {
+        let sorted = restaurants.sorted(by: >)
+        prepareCellViewModels(from: sorted)
     }
     
     // MARK: - Private methods

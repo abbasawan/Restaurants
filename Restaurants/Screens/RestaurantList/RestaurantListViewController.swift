@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class RestaurantListViewController: UIViewController {
     
@@ -20,7 +21,32 @@ final class RestaurantListViewController: UIViewController {
     
     // MARK: - Private properties
     private let viewModel: RestaurantListViewModel
-    private var tableView: UITableView!
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        view.addSubview(tableView)
+        
+        tableView.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        return tableView
+    }()
+    
+    private lazy var filterOptionPicker: OptionPickerView = {
+        let picker = OptionPickerView(viewModel: viewModel.sortingOptionsViewModel)
+        view.addSubview(picker)
+        picker.isHidden = true
+        picker.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        return picker
+    }()
     
     // MARK: - Lifecycle
     required init?(coder: NSCoder) {
@@ -30,11 +56,6 @@ final class RestaurantListViewController: UIViewController {
     init(viewModel: RestaurantListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    override func loadView() {
-        tableView = UITableView(frame: .zero, style: .plain)
-        self.view = tableView
     }
     
     override func viewDidLoad() {
@@ -54,6 +75,16 @@ final class RestaurantListViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
+        let filterButton = UIBarButtonItem(barButtonSystemItem: .refresh,
+                                           target: self,
+                                           action: #selector(filterButtonTapped))
+        navigationItem.rightBarButtonItem = filterButton
+        
+        filterOptionPicker.completion = { [weak self] option in
+            print(option)
+            self?.filterOptionPicker.isHidden = true
+            self?.viewModel.didSelectSortOption()
+        }
 
         setupSearchController()
         setupTableView()
@@ -71,8 +102,11 @@ final class RestaurantListViewController: UIViewController {
         tableView.register(RestaurantListTableCell.self)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 50
+    }
+    
+    @objc private func filterButtonTapped() {
+        view.bringSubviewToFront(filterOptionPicker)
+        filterOptionPicker.isHidden = false
     }
 }
 
