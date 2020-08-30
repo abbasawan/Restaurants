@@ -48,6 +48,7 @@
 		8D7E0A6524F5B75A003EF112 /* RestaurantListApiProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7E0A6424F5B75A003EF112 /* RestaurantListApiProviderMock.swift */; };
 		8DB764D324F9C44D00188C59 /* OptionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB764D224F9C44D00188C59 /* OptionPickerView.swift */; };
 		8DB764D524F9C46A00188C59 /* OptionPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB764D424F9C46A00188C59 /* OptionPickerViewModel.swift */; };
+		8DDA653324FBAB0B0033C4F5 /* RestaurantSortingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA653224FBAB0B0033C4F5 /* RestaurantSortingProvider.swift */; };
 		8DFDF09B24F5ADBB00179A8C /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDF09A24F5ADBB00179A8C /* AppCoordinatorTests.swift */; };
 		8DFDF09E24F5B01800179A8C /* LocalDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDF09D24F5B01800179A8C /* LocalDataProviderTests.swift */; };
 		8DFDF0A124F5B0CA00179A8C /* RestaurantListApiRequestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDF0A024F5B0CA00179A8C /* RestaurantListApiRequestMock.swift */; };
@@ -111,6 +112,7 @@
 		8D7E0A6424F5B75A003EF112 /* RestaurantListApiProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListApiProviderMock.swift; sourceTree = "<group>"; };
 		8DB764D224F9C44D00188C59 /* OptionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionPickerView.swift; sourceTree = "<group>"; };
 		8DB764D424F9C46A00188C59 /* OptionPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionPickerViewModel.swift; sourceTree = "<group>"; };
+		8DDA653224FBAB0B0033C4F5 /* RestaurantSortingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSortingProvider.swift; sourceTree = "<group>"; };
 		8DFDF09A24F5ADBB00179A8C /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		8DFDF09D24F5B01800179A8C /* LocalDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataProviderTests.swift; sourceTree = "<group>"; };
 		8DFDF0A024F5B0CA00179A8C /* RestaurantListApiRequestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListApiRequestMock.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		8D075D8C24F47F6500AC2F9C /* Restaurants */ = {
 			isa = PBXGroup;
 			children = (
+				8DDA653124FBAAE90033C4F5 /* Services */,
 				8D075DB324F47FBD00AC2F9C /* Application */,
 				8D075DBF24F47FBE00AC2F9C /* Common */,
 				8D075DBC24F47FBE00AC2F9C /* Coordinator */,
@@ -375,6 +378,14 @@
 			path = OptionPickerView;
 			sourceTree = "<group>";
 		};
+		8DDA653124FBAAE90033C4F5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8DDA653224FBAB0B0033C4F5 /* RestaurantSortingProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		8DFDF09924F5ADAB00179A8C /* AppCoordinatorTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,6 +539,7 @@
 				8D075DDE24F47FBE00AC2F9C /* AppDelegate.swift in Sources */,
 				8D075DE124F47FBE00AC2F9C /* RestaurantListLocalApiRequest.swift in Sources */,
 				8D075DDC24F47FBE00AC2F9C /* AppCoordinator.swift in Sources */,
+				8DDA653324FBAB0B0033C4F5 /* RestaurantSortingProvider.swift in Sources */,
 				8D075DF424F47FBE00AC2F9C /* RestaurantListFactory.swift in Sources */,
 				8D075DEE24F47FBE00AC2F9C /* RestaurantListViewControllerNavigationDelegate.swift in Sources */,
 				8D075DEB24F47FBE00AC2F9C /* RestaurantsResponse.swift in Sources */,

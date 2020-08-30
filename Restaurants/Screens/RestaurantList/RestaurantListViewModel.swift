@@ -34,6 +34,7 @@ final class RestaurantListViewModel {
     
     // MARK: - Private properties
     private let apiProvider: RestaurantListApiProvidable
+    private let sortingProvider: RestaurantSortingProvidable
     private var restaurants: [Restaurant] = []
     private var cellViewModels: [RestaurantListTableCellViewModel] = [] {
         didSet {
@@ -42,8 +43,9 @@ final class RestaurantListViewModel {
     }
     
     // MARK: - Lifecycle
-    init(apiProvider: RestaurantListApiProvidable) {
+    init(apiProvider: RestaurantListApiProvidable, sortingProvider: RestaurantSortingProvidable) {
         self.apiProvider = apiProvider
+        self.sortingProvider = sortingProvider
     }
     
     // MARK: - Public methods
@@ -85,8 +87,8 @@ final class RestaurantListViewModel {
     }
     
     func didSelectSortOption() {
-        let sorted = restaurants.sorted(by: >)
-        prepareCellViewModels(from: sorted)
+        restaurants.sort(by: sortingProvider.bestMatch)
+        prepareCellViewModels(from: restaurants)
     }
     
     // MARK: - Private methods

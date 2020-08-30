@@ -14,7 +14,8 @@ final class RestaurantListFactory {
     // MARK: - Public methods
     func makeRestaurantListScreen() -> RestaurantListViewController {
         let apiProvider = AppDIContainer.shared.restaurantListApiProvider()
-        let viewModel = RestaurantListViewModel(apiProvider: apiProvider)
+        let sortingProvider = RestaurantSortingProvider()
+        let viewModel = RestaurantListViewModel(apiProvider: apiProvider, sortingProvider: sortingProvider)
         let controller = RestaurantListViewController(viewModel: viewModel)
         
         return controller
