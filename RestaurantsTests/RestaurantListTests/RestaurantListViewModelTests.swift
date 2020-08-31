@@ -12,16 +12,18 @@ import XCTest
 final class RestaurantListViewModelTests: XCTestCase {
     private var viewModel: RestaurantListViewModel!
     private var apiProvider: RestaurantListApiProviderMock!
+    private var sortingProvider: RestaurantSortingProviderMock!
     
     override func setUp() {
         super.setUp()
         
         apiProvider = RestaurantListApiProviderMock()
-        viewModel = RestaurantListViewModel(apiProvider: apiProvider)
+        viewModel = RestaurantListViewModel(apiProvider: apiProvider, sortingProvider: sortingProvider)
     }
 
     override func tearDown() {
         apiProvider = nil
+        sortingProvider = nil
         viewModel.delegate = nil
         viewModel.navigationDelegate = nil
         viewModel = nil

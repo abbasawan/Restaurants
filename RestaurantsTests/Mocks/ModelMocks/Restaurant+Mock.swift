@@ -11,7 +11,7 @@
 extension Restaurant {
     static func makeRestaurant(id: String = "1",
                                name: String = "Falafel Palace",
-                               status: Status = Status(rawValue: "open")!,
+                               status: Status = .open,
                                sortingValues: SortingValues = SortingValues.makeSortingValues()) -> Restaurant {
         .init(id: id, name: name, status: status, sortingValues: sortingValues)
     }

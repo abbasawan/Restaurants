@@ -13,6 +13,7 @@ final class RestaurantListTableCell: UITableViewCell {
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        self.detailTextLabel?.numberOfLines = 2
     }
     
     required init?(coder: NSCoder) {
@@ -22,6 +23,6 @@ final class RestaurantListTableCell: UITableViewCell {
     // MARK: - Public methods
     func configure(with viewModel: RestaurantListTableCellViewModel) {
         textLabel?.text = viewModel.name
-        detailTextLabel?.text = viewModel.status
+        detailTextLabel?.text = viewModel.status + "\n" + "Sort: " + viewModel.sortingValue
     }
 }

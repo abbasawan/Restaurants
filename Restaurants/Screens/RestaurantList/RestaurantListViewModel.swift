@@ -87,7 +87,7 @@ final class RestaurantListViewModel {
     }
     
     func didSelectSortOption() {
-        restaurants.sort(by: sortingProvider.bestMatch)
+        restaurants.sort(by: sortingProvider.sorter(for: .bestMatch))
         prepareCellViewModels(from: restaurants)
     }
     
@@ -115,7 +115,9 @@ final class RestaurantListViewModel {
     /// - Parameter restaurant: restaurant object from which to create cell view model
     /// - Returns: Cell view model to be displayed in the list
     private func makeCellViewModel(with restaurant: Restaurant) -> RestaurantListTableCellViewModel {
-        .init(name: restaurant.name, status: restaurant.status.rawValue)
+        .init(name: restaurant.name,
+              status: restaurant.status.rawValue,
+              sortingValue: "\(restaurant.sortingValues.bestMatch)")
     }
     
     /// Filter the restaurants if their name contains the search term and

@@ -11,6 +11,7 @@ import Foundation
 struct RestaurantListTableCellViewModel {
     let name: String
     let status: String
+    let sortingValue: String
 }
 
 extension RestaurantListTableCellViewModel: Equatable {}
