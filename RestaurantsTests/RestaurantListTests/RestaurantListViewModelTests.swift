@@ -18,7 +18,9 @@ final class RestaurantListViewModelTests: XCTestCase {
         super.setUp()
         
         apiProvider = RestaurantListApiProviderMock()
-        viewModel = RestaurantListViewModel(apiProvider: apiProvider, sortingProvider: sortingProvider)
+        viewModel = RestaurantListViewModel(apiProvider: apiProvider,
+                                            sortingProvider: sortingProvider,
+                                            defaultSortType: .bestMatch)
     }
 
     override func tearDown() {

@@ -9,10 +9,10 @@
 import UIKit
 
 final class OptionPickerViewModel {
-    private let options: [String]
+    private let options: [RestaurantSortingType]
     
     // MARK: - Lifecycle
-    init(options: [String]) {
+    init(options: [RestaurantSortingType]) {
         self.options = options
     }
     
@@ -25,6 +25,27 @@ final class OptionPickerViewModel {
     }
     
     func pickerViewTitle(forRow row: Int, forComponent component: Int) -> String {
-        options[row]
+        switch options[row] {
+        case .bestMatch:
+            return "Best Match".localized
+        case .newest:
+            return "Newest".localized
+        case .ratingAverage:
+            return "Rating Average".localized
+        case .distance:
+            return "Distance".localized
+        case .popularity:
+            return "Popularity".localized
+        case .averageProductPrice:
+            return "Average Price".localized
+        case .deliveryCosts:
+            return "Delivery Cost".localized
+        case .minCost:
+            return "Minimum Order".localized
+        }
+    }
+    
+    func option(at index: Int) -> RestaurantSortingType {
+        options[index]
     }
 }

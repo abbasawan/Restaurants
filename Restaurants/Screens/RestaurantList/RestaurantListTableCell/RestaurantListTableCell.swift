@@ -22,7 +22,7 @@ final class RestaurantListTableCell: UITableViewCell {
     
     // MARK: - Public methods
     func configure(with viewModel: RestaurantListTableCellViewModel) {
-        textLabel?.text = viewModel.name
-        detailTextLabel?.text = viewModel.status + "\n" + "Sort: " + viewModel.sortingValue
+        textLabel?.text = viewModel.title
+        detailTextLabel?.text = viewModel.subtitle
     }
 }

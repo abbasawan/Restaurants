@@ -12,7 +12,7 @@ final class RestaurantSortingProviderMock: RestaurantSortingProvidable {
     var result = false
     
     func sorter(for type: RestaurantSortingType) -> RestaurantComparator {
-        return {[weak self] _, _ in
+        return { [weak self] _, _ in
             guard let self = self else { return false }
             
             return self.result

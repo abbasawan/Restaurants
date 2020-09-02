@@ -47,13 +47,17 @@ final class RestaurantListApiProviderTests: XCTestCase {
     
     func testApiProvider_whenDataServiceHasValidData_shouldReturnRestaurants() {
         let expectation = self.expectation(description: #function)
-        dataProvider.result = .success(RestaurantsResponse.makeRestaurantsResponse())
+        let restaurant1 = Restaurant.makeRestaurant(id: "100")
+        let restaurant2 = Restaurant.makeRestaurant(id: "200")
+        dataProvider.result = .success(RestaurantsResponse.makeRestaurantsResponse(restaurants: [restaurant1, restaurant2]))
         
         apiProvider.loadRestaurantList { (result) in
             switch result {
             case .success(let restaurants):
                 XCTAssertNotNil(restaurants)
-                XCTAssertEqual(restaurants.count, 1)
+                XCTAssertEqual(restaurants.count, 2)
+                XCTAssertEqual(restaurants[0].id, restaurant1.id)
+                XCTAssertEqual(restaurants[1].id, restaurant2.id)
             case .failure(let error):
                 XCTFail(error.localizedDescription)
                 XCTFail("Should not fail")

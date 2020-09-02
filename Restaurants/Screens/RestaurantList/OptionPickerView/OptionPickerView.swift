@@ -17,7 +17,7 @@ final class OptionPickerView: UIView {
     }
     
     // MARK - Public properties
-    var completion: ((String) -> Void)?
+    var completion: ((RestaurantSortingType) -> Void)?
     
     // MARK - Private properties
     private let viewModel: OptionPickerViewModel
@@ -76,7 +76,7 @@ final class OptionPickerView: UIView {
     }
     
     @objc private func doneButtonTapped() {
-        completion?("\(pickerView.selectedRow(inComponent: 0))")
+        completion?(viewModel.option(at: pickerView.selectedRow(inComponent: 0)))
     }
 }
 

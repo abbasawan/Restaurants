@@ -10,6 +10,10 @@ import UIKit
 import SnapKit
 
 final class RestaurantListViewController: UIViewController {
+    // MARK: - Constants
+    private struct Constants {
+        static let tableViewEstimatedRowHeight: CGFloat = 65.0
+    }
     
     // MARK: - Public properties
     /// The object that acts as the navigation delegate of login view controller
@@ -70,24 +74,28 @@ final class RestaurantListViewController: UIViewController {
         viewModel.delegate = self
         self.title = viewModel.screenTitle
         
+        setupNavigationBar()
+        
+        filterOptionPicker.completion = { [weak self] option in
+            self?.filterOptionPicker.isHidden = true
+            self?.viewModel.didSelectSortOption(option)
+        }
+        
+        setupSearchController()
+        setupTableView()
+    }
+    
+    private func setupNavigationBar() {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.barTintColor = .taOrange
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
-        let filterButton = UIBarButtonItem(barButtonSystemItem: .refresh,
+        let filterButton = UIBarButtonItem(title: "Sort".localized,
+                                           style: .plain,
                                            target: self,
                                            action: #selector(filterButtonTapped))
         navigationItem.rightBarButtonItem = filterButton
-        
-        filterOptionPicker.completion = { [weak self] option in
-            print(option)
-            self?.filterOptionPicker.isHidden = true
-            self?.viewModel.didSelectSortOption()
-        }
-
-        setupSearchController()
-        setupTableView()
     }
     
     private func setupSearchController() {
@@ -100,6 +108,8 @@ final class RestaurantListViewController: UIViewController {
     
     private func setupTableView() {
         tableView.register(RestaurantListTableCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = Constants.tableViewEstimatedRowHeight
         tableView.dataSource = self
         tableView.delegate = self
     }

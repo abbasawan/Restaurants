@@ -20,14 +20,14 @@ final class RestaurantListViewModel {
     let screenTitle = "Restaurant List".localized
     let searchPlaceholderText = "Type Restaurant name".localized
     
-    let sortingOptionsViewModel = OptionPickerViewModel(options: ["Best Match".localized,
-                                                                  "newest".localized,
-                                                                  "ratingAverage".localized,
-                                                                  "distance".localized,
-                                                                  "popularity".localized,
-                                                                  "averageProductPrice".localized,
-                                                                  "deliveryCosts".localized,
-                                                                  "minCost".localized])
+    let sortingOptionsViewModel = OptionPickerViewModel(options: [.bestMatch,
+                                                                  .newest,
+                                                                  .ratingAverage,
+                                                                  .distance,
+                                                                  .popularity,
+                                                                  .averageProductPrice,
+                                                                  .deliveryCosts,
+                                                                  .minCost])
     
     weak var delegate: RestaurantListViewModelDelegate?
     weak var navigationDelegate: RestaurantListViewControllerNavigationDelegate?
@@ -35,6 +35,7 @@ final class RestaurantListViewModel {
     // MARK: - Private properties
     private let apiProvider: RestaurantListApiProvidable
     private let sortingProvider: RestaurantSortingProvidable
+    private var sortType: RestaurantSortingType
     private var restaurants: [Restaurant] = []
     private var cellViewModels: [RestaurantListTableCellViewModel] = [] {
         didSet {
@@ -43,9 +44,12 @@ final class RestaurantListViewModel {
     }
     
     // MARK: - Lifecycle
-    init(apiProvider: RestaurantListApiProvidable, sortingProvider: RestaurantSortingProvidable) {
+    init(apiProvider: RestaurantListApiProvidable,
+         sortingProvider: RestaurantSortingProvidable,
+         defaultSortType: RestaurantSortingType) {
         self.apiProvider = apiProvider
         self.sortingProvider = sortingProvider
+        sortType = defaultSortType
     }
     
     // MARK: - Public methods
@@ -55,7 +59,9 @@ final class RestaurantListViewModel {
             case .failure(let error):
                 self?.navigationDelegate?.show(error)
             case .success(let restaurants):
-                self?.handleRestaurantResponse(restaurants)
+                guard let self = self else { return }
+                self.restaurants = restaurants
+                self.didSelectSortOption(self.sortType)
             }
         }
     }
@@ -86,17 +92,13 @@ final class RestaurantListViewModel {
         // navigationDelegate?.showDetails(for: restaurants[indexPath.row])
     }
     
-    func didSelectSortOption() {
-        restaurants.sort(by: sortingProvider.sorter(for: .bestMatch))
+    func didSelectSortOption(_ sortType: RestaurantSortingType) {
+        self.sortType = sortType
+        restaurants.sort(by: sortingProvider.sorter(for: sortType))
         prepareCellViewModels(from: restaurants)
     }
     
     // MARK: - Private methods
-    
-    private func handleRestaurantResponse(_ response: [Restaurant]) {
-        restaurants = response.sorted(by: { $0.status > $1.status } )
-        prepareCellViewModels(from: restaurants)
-    }
     
     /// Create list of table cell view models from the list of restaurants
     /// - Parameter restaurants: List of restaurants from which table cell view models will be created
@@ -115,9 +117,43 @@ final class RestaurantListViewModel {
     /// - Parameter restaurant: restaurant object from which to create cell view model
     /// - Returns: Cell view model to be displayed in the list
     private func makeCellViewModel(with restaurant: Restaurant) -> RestaurantListTableCellViewModel {
-        .init(name: restaurant.name,
-              status: restaurant.status.rawValue,
-              sortingValue: "\(restaurant.sortingValues.bestMatch)")
+        .init(title: restaurant.name,
+              subtitle: cellSubtitleString(from: restaurant, for: sortType))
+    }
+    
+    private func cellSubtitleString(from restaurant: Restaurant,
+                                    for sortType: RestaurantSortingType) -> String {
+        let heading: String
+        let value: String
+        
+        switch sortType {
+        case .bestMatch:
+            heading = "Best Match".localized
+            value = "\(restaurant.sortingValues.bestMatch)"
+        case .newest:
+            heading = "Newest".localized
+            value = "\(restaurant.sortingValues.newest)"
+        case .ratingAverage:
+            heading = "Rating Average".localized
+            value = "\(restaurant.sortingValues.ratingAverage)"
+        case .distance:
+            heading = "Distance".localized
+            value = "\(restaurant.sortingValues.distance)"
+        case .popularity:
+            heading = "Popularity".localized
+            value = "\(restaurant.sortingValues.popularity)"
+        case .averageProductPrice:
+            heading = "Average Price".localized
+            value = "\(restaurant.sortingValues.averageProductPrice)"
+        case .deliveryCosts:
+            heading = "Delivery Cost".localized
+            value = "\(restaurant.sortingValues.deliveryCosts)"
+        case .minCost:
+            heading = "Minimum Order".localized
+            value = "\(restaurant.sortingValues.minCost)"
+        }
+        
+        return restaurant.status.rawValue + "\n" + heading + ": " + value
     }
     
     /// Filter the restaurants if their name contains the search term and
