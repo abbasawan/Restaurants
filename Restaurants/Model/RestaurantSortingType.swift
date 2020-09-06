@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum RestaurantSortingType {
+enum RestaurantSortingType: CaseIterable {
     case bestMatch
     case newest
     case ratingAverage

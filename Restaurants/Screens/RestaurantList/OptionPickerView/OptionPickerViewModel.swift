@@ -24,7 +24,7 @@ final class OptionPickerViewModel {
         options.count
     }
     
-    func pickerViewTitle(forRow row: Int, forComponent component: Int) -> String {
+    func pickerViewTitle(forRow row: Int, inComponent component: Int) -> String {
         switch options[row] {
         case .bestMatch:
             return "Best Match".localized

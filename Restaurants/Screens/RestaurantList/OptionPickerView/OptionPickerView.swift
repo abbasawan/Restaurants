@@ -94,6 +94,6 @@ extension OptionPickerView: UIPickerViewDataSource {
 // MARK - UIPickerView delegate methods
 extension OptionPickerView: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        viewModel.pickerViewTitle(forRow: row, forComponent: component)
+        viewModel.pickerViewTitle(forRow: row, inComponent: component)
     }
 }

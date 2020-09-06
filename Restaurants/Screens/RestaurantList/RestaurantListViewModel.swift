@@ -20,14 +20,7 @@ final class RestaurantListViewModel {
     let screenTitle = "Restaurant List".localized
     let searchPlaceholderText = "Type Restaurant name".localized
     
-    let sortingOptionsViewModel = OptionPickerViewModel(options: [.bestMatch,
-                                                                  .newest,
-                                                                  .ratingAverage,
-                                                                  .distance,
-                                                                  .popularity,
-                                                                  .averageProductPrice,
-                                                                  .deliveryCosts,
-                                                                  .minCost])
+    let sortingOptionsViewModel = OptionPickerViewModel(options: RestaurantSortingType.allCases)
     
     weak var delegate: RestaurantListViewModelDelegate?
     weak var navigationDelegate: RestaurantListViewControllerNavigationDelegate?

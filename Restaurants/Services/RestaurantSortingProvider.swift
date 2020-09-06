@@ -17,69 +17,37 @@ protocol RestaurantSortingProvidable {
 final class RestaurantSortingProvider {
     
     // MARK - Sorting methods
-    private let bestMatch: RestaurantComparator = {
-        return compare(a: ($0.status, $0.sortingValues.bestMatch),
-                       b: ($1.status, $1.sortingValues.bestMatch),
-                       comparator: descending)
+    private func ascendingSorter<T: Comparable>(for keyPath: KeyPath<Restaurant, T>) -> RestaurantComparator {
+    {
+        self.compare(a: ($0.status, $0[keyPath: keyPath]),
+                     b: ($1.status, $1[keyPath: keyPath]),
+                     comparator: self.ascending)
+        }
     }
     
-    private let newest: RestaurantComparator = {
-        return compare(a: ($0.status, $0.sortingValues.newest),
-                       b: ($1.status, $1.sortingValues.newest),
-                       comparator: descending)
+    private func descendingSorter<T: Comparable>(for keyPath: KeyPath<Restaurant, T>) -> RestaurantComparator {
+    {
+        self.compare(a: ($0.status, $0[keyPath: keyPath]),
+                     b: ($1.status, $1[keyPath: keyPath]),
+                     comparator: self.descending)
+        }
     }
     
-    private let ratingAverage: RestaurantComparator = {
-        return compare(a: ($0.status, $0.sortingValues.ratingAverage),
-                       b: ($1.status, $1.sortingValues.ratingAverage),
-                       comparator: descending)
-    }
-    
-    private let distance: RestaurantComparator = {
-        return compare(a: ($0.status, $0.sortingValues.distance),
-                       b: ($1.status, $1.sortingValues.distance),
-                       comparator: ascending)
-    }
-    
-    private let popularity: RestaurantComparator = {
-        return compare(a: ($0.status, $0.sortingValues.popularity),
-                       b: ($1.status, $1.sortingValues.popularity),
-                       comparator: descending)
-    }
-    
-    private let averageProductPrice: RestaurantComparator = {
-        return compare(a: ($0.status, $0.sortingValues.averageProductPrice),
-                       b: ($1.status, $1.sortingValues.averageProductPrice),
-                       comparator: ascending)
-    }
-    
-    private let deliveryCosts: RestaurantComparator = {
-        return compare(a: ($0.status, $0.sortingValues.deliveryCosts),
-                       b: ($1.status, $1.sortingValues.deliveryCosts),
-                       comparator: ascending)
-    }
-    
-    private let minCost: RestaurantComparator = {
-        return compare(a: ($0.status, $0.sortingValues.minCost),
-                       b: ($1.status, $1.sortingValues.minCost),
-                       comparator: ascending)
-    }
-    
-    private static func compare<T: Comparable>(a: (status: Restaurant.Status, sortingValue: T),
-                                               b: (status: Restaurant.Status, sortingValue: T),
-                                               comparator: (T, T) -> Bool) -> Bool {
-        if (a.status) == (b.status) {
+    private func compare<T: Comparable>(a: (status: Restaurant.Status, sortingValue: T),
+                                        b: (status: Restaurant.Status, sortingValue: T),
+                                        comparator: (T, T) -> Bool) -> Bool {
+        if a.status == b.status {
             return comparator(a.sortingValue, b.sortingValue)
         }
         
-        return ((a.status) > (b.status)) && comparator(a.sortingValue, b.sortingValue)
+        return (a.status > b.status) && comparator(a.sortingValue, b.sortingValue)
     }
     
-    private static func descending<U: Comparable>(a: U, b: U) -> Bool {
+    private func descending<U: Comparable>(a: U, b: U) -> Bool {
         a > b
     }
     
-    private static func ascending<U: Comparable>(a: U, b: U) -> Bool {
+    private func ascending<U: Comparable>(a: U, b: U) -> Bool {
         a < b
     }
 }
@@ -89,21 +57,21 @@ extension RestaurantSortingProvider: RestaurantSortingProvidable {
     func sorter(for type: RestaurantSortingType) -> RestaurantComparator {
         switch type {
         case .bestMatch:
-            return bestMatch
+            return descendingSorter(for: \.sortingValues.bestMatch)
         case .newest:
-            return newest
+            return descendingSorter(for: \.sortingValues.newest)
         case .ratingAverage:
-            return ratingAverage
+            return descendingSorter(for: \.sortingValues.ratingAverage)
         case .distance:
-            return distance
+            return ascendingSorter(for: \.sortingValues.distance)
         case .popularity:
-            return popularity
+            return descendingSorter(for: \.sortingValues.popularity)
         case .averageProductPrice:
-            return averageProductPrice
+            return ascendingSorter(for: \.sortingValues.averageProductPrice)
         case .deliveryCosts:
-            return deliveryCosts
+            return ascendingSorter(for: \.sortingValues.deliveryCosts)
         case .minCost:
-            return minCost
+            return ascendingSorter(for: \.sortingValues.minCost)
         }
     }
 }

@@ -42,6 +42,12 @@ final class RestaurantListViewModelTests: XCTestCase {
         super.tearDown()
     }
     
+    func testViewModel_whenInitialized_pickerViewModelShouldHaveCorrectNumberOfSortingOptions() {
+        let allSortingOptions = RestaurantSortingType.allCases
+        XCTAssertEqual(viewModel.sortingOptionsViewModel.pickerViewNumberOfRows(inComponent: 0),
+                       allSortingOptions.count)
+    }
+    
     func testViewModel_whenViewDidLoadIsCalled_shouldLoadData() {
         viewModel.viewDidLoad()
         
@@ -67,7 +73,7 @@ final class RestaurantListViewModelTests: XCTestCase {
         XCTAssertEqual(navigationDelegate.showErrorCallCount, 0)
     }
     
-    func testViewModel_whenViewDidLoadIsCalledAndDataProviderReturnedData_shouldHaveValidData() {
+    func testViewModel_whenDataIsSuccessfullyLoaded_shouldHaveCorrectNumberOfRows() {
         let restaurant1 = Restaurant.makeRestaurant()
         let restaurant2 = Restaurant.makeRestaurant()
         apiProvider.result = .success([restaurant1, restaurant2])
@@ -78,7 +84,7 @@ final class RestaurantListViewModelTests: XCTestCase {
         XCTAssertEqual(navigationDelegate.showErrorCallCount, 0)
     }
     
-    func testViewModel_whenHasValidDataAndRequestedCellViewModels_shouldReturnValidData() {
+    func testViewModel_whenDataIsSuccessfullyLoadedAndRequestedCellViewModels_shouldReturnCorrectCellModels() {
         let sortingValues1 = Restaurant.SortingValues.makeSortingValues(bestMatch: 23.1)
         let restaurant1 = Restaurant.makeRestaurant(name: "1", sortingValues: sortingValues1)
         
