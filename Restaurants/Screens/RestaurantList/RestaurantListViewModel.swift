@@ -71,7 +71,6 @@ final class RestaurantListViewModel {
             return
         }
         
-        print(searchText)
         filterRestaurantList(for: searchText)
     }
     
@@ -166,6 +165,7 @@ final class RestaurantListViewModel {
             return
         }
         
+        // Filter restaurants by name, ignoring the case
         let filtered = restaurants.filter({
             $0.name.lowercased().contains(name.lowercased())
         })

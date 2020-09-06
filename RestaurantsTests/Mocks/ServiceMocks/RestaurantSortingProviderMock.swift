@@ -9,13 +9,13 @@
 @testable import Restaurants
 
 final class RestaurantSortingProviderMock: RestaurantSortingProvidable {
-    var result = false
+    // The mock will have `ascending` bestMatch as default sorting method
+    // The user of mock will set the this property according to the need
+    var sortingMethod: RestaurantComparator = {
+        $0.sortingValues.bestMatch < $1.sortingValues.bestMatch
+    }
     
     func sorter(for type: RestaurantSortingType) -> RestaurantComparator {
-        return { [weak self] _, _ in
-            guard let self = self else { return false }
-            
-            return self.result
-        }
+        return sortingMethod
     }
 }

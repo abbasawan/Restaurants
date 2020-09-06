@@ -43,6 +43,8 @@
 		8D3B270C24F4858E006990A0 /* SortingValues+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B270B24F4858E006990A0 /* SortingValues+Mock.swift */; };
 		8D3B270E24F48718006990A0 /* RestaurantsResponse+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B270D24F48718006990A0 /* RestaurantsResponse+Mock.swift */; };
 		8D3CB86A24F9B91C0038A654 /* StatusSortingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3CB86924F9B91C0038A654 /* StatusSortingTests.swift */; };
+		8D6871A52501A77B00A7EF20 /* RestaurantListViewControllerNavigationDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6871A42501A77B00A7EF20 /* RestaurantListViewControllerNavigationDelegateMock.swift */; };
+		8D6871A72501AA0B00A7EF20 /* RestaurantListViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6871A62501AA0B00A7EF20 /* RestaurantListViewModelDelegateMock.swift */; };
 		8D692C5A24FAECC7003AADC9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8D692C5924FAECC7003AADC9 /* SnapKit */; };
 		8D7E0A6324F5B6AD003EF112 /* RestaurantListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7E0A6224F5B6AD003EF112 /* RestaurantListViewModelTests.swift */; };
 		8D7E0A6524F5B75A003EF112 /* RestaurantListApiProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7E0A6424F5B75A003EF112 /* RestaurantListApiProviderMock.swift */; };
@@ -111,6 +113,8 @@
 		8D3B270B24F4858E006990A0 /* SortingValues+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SortingValues+Mock.swift"; sourceTree = "<group>"; };
 		8D3B270D24F48718006990A0 /* RestaurantsResponse+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestaurantsResponse+Mock.swift"; sourceTree = "<group>"; };
 		8D3CB86924F9B91C0038A654 /* StatusSortingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSortingTests.swift; sourceTree = "<group>"; };
+		8D6871A42501A77B00A7EF20 /* RestaurantListViewControllerNavigationDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewControllerNavigationDelegateMock.swift; sourceTree = "<group>"; };
+		8D6871A62501AA0B00A7EF20 /* RestaurantListViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		8D7E0A6224F5B6AD003EF112 /* RestaurantListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewModelTests.swift; sourceTree = "<group>"; };
 		8D7E0A6424F5B75A003EF112 /* RestaurantListApiProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListApiProviderMock.swift; sourceTree = "<group>"; };
 		8DB764D224F9C44D00188C59 /* OptionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionPickerView.swift; sourceTree = "<group>"; };
@@ -432,6 +436,8 @@
 			children = (
 				8DFDF0A024F5B0CA00179A8C /* RestaurantListApiRequestMock.swift */,
 				8D7E0A6424F5B75A003EF112 /* RestaurantListApiProviderMock.swift */,
+				8D6871A42501A77B00A7EF20 /* RestaurantListViewControllerNavigationDelegateMock.swift */,
+				8D6871A62501AA0B00A7EF20 /* RestaurantListViewModelDelegateMock.swift */,
 			);
 			path = RestaurantListMocks;
 			sourceTree = "<group>";
@@ -605,7 +611,9 @@
 				8DF5857624FD9EDC00610627 /* RestaurantSortingProviderMock.swift in Sources */,
 				8D3B270A24F48508006990A0 /* Restaurant+Mock.swift in Sources */,
 				8D34DC6025005D4E004D99E8 /* RestaurantListCoordinatorTests.swift in Sources */,
+				8D6871A72501AA0B00A7EF20 /* RestaurantListViewModelDelegateMock.swift in Sources */,
 				8D3B270724F48289006990A0 /* DataProviderMock.swift in Sources */,
+				8D6871A52501A77B00A7EF20 /* RestaurantListViewControllerNavigationDelegateMock.swift in Sources */,
 				8D3CB86A24F9B91C0038A654 /* StatusSortingTests.swift in Sources */,
 				8D7E0A6524F5B75A003EF112 /* RestaurantListApiProviderMock.swift in Sources */,
 				8DFDF09B24F5ADBB00179A8C /* AppCoordinatorTests.swift in Sources */,
