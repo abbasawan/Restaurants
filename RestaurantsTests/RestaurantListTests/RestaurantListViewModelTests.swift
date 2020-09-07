@@ -127,7 +127,7 @@ final class RestaurantListViewModelTests: XCTestCase {
         XCTAssertEqual(cellViewModel3?.title, restaurant2.name)
         
         sortingProvider.sortingMethod = {
-            $0.sortingValues.popularity < $1.sortingValues.popularity
+            $0.popularity < $1.popularity
         }
         
         // Change the sort type

@@ -40,7 +40,7 @@ final class RestaurantSortingProvider {
             return comparator(a.sortingValue, b.sortingValue)
         }
         
-        return (a.status > b.status) && comparator(a.sortingValue, b.sortingValue)
+        return a.status > b.status
     }
     
     private func descending<U: Comparable>(a: U, b: U) -> Bool {

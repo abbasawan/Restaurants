@@ -36,13 +36,13 @@ final class RestaurantSortingProviderTests: XCTestCase {
         assertEqual(expected, restaurants, for: \.id)
         
         // .open restaurants are at top
-        assertDescending(a: restaurants[0], b: restaurants[1], path: \.sortingValues.bestMatch)
+        assertDescending(a: restaurants[0], b: restaurants[1], path: \.bestMatch)
         
         // .orderAhead restaurants are in the middle
-        assertDescending(a: restaurants[2], b: restaurants[3], path: \.sortingValues.bestMatch)
+        assertDescending(a: restaurants[2], b: restaurants[3], path: \.bestMatch)
         
         // .closed restaurants are at the end
-        assertDescending(a: restaurants[4], b: restaurants[5], path: \.sortingValues.bestMatch)
+        assertDescending(a: restaurants[4], b: restaurants[5], path: \.bestMatch)
     }
     
     func testSortingProvider_whenSortedByNewest_shouldBeSortedByNewestInDescendingOrder() {
@@ -54,13 +54,13 @@ final class RestaurantSortingProviderTests: XCTestCase {
         assertEqual(expected, restaurants, for: \.id)
         
         // .open restaurants are at top
-        assertDescending(a: restaurants[0], b: restaurants[1], path: \.sortingValues.newest)
+        assertDescending(a: restaurants[0], b: restaurants[1], path: \.newest)
         
         // .orderAhead restaurants are in the middle
-        assertDescending(a: restaurants[2], b: restaurants[3], path: \.sortingValues.newest)
+        assertDescending(a: restaurants[2], b: restaurants[3], path: \.newest)
         
         // .closed restaurants are at the end
-        assertDescending(a: restaurants[4], b: restaurants[5], path: \.sortingValues.newest)
+        assertDescending(a: restaurants[4], b: restaurants[5], path: \.newest)
     }
     
     func testSortingProvider_whenSortedByAverageRating_shouldBeSortedByAverageRatingInDescendingOrder() {
@@ -72,13 +72,13 @@ final class RestaurantSortingProviderTests: XCTestCase {
         assertEqual(expected, restaurants, for: \.id)
         
         // .open restaurants are at top
-        assertDescending(a: restaurants[0], b: restaurants[1], path: \.sortingValues.ratingAverage)
+        assertDescending(a: restaurants[0], b: restaurants[1], path: \.ratingAverage)
         
         // .orderAhead restaurants are in the middle
-        assertDescending(a: restaurants[2], b: restaurants[3], path: \.sortingValues.ratingAverage)
+        assertDescending(a: restaurants[2], b: restaurants[3], path: \.ratingAverage)
         
         // .closed restaurants are at the end
-        assertDescending(a: restaurants[4], b: restaurants[5], path: \.sortingValues.ratingAverage)
+        assertDescending(a: restaurants[4], b: restaurants[5], path: \.ratingAverage)
     }
     
     func testSortingProvider_whenSortedByDistance_shouldBeSortedByDistanceInAscendingOrder() {
@@ -90,13 +90,13 @@ final class RestaurantSortingProviderTests: XCTestCase {
         assertEqual(expected, restaurants, for: \.id)
         
         // .open restaurants are at top
-        assertAscending(a: restaurants[0], b: restaurants[1], path: \.sortingValues.distance)
+        assertAscending(a: restaurants[0], b: restaurants[1], path: \.distance)
         
         // .orderAhead restaurants are in the middle
-        assertAscending(a: restaurants[2], b: restaurants[3], path: \.sortingValues.distance)
+        assertAscending(a: restaurants[2], b: restaurants[3], path: \.distance)
         
         // .closed restaurants are at the end
-        assertAscending(a: restaurants[4], b: restaurants[5], path: \.sortingValues.distance)
+        assertAscending(a: restaurants[4], b: restaurants[5], path: \.distance)
     }
     
     func testSortingProvider_whenSortedByPopularity_shouldBeSortedByPopularityInDescendingOrder() {
@@ -108,13 +108,13 @@ final class RestaurantSortingProviderTests: XCTestCase {
         assertEqual(expected, restaurants, for: \.id)
         
         // .open restaurants are at top
-        assertDescending(a: restaurants[0], b: restaurants[1], path: \.sortingValues.popularity)
+        assertDescending(a: restaurants[0], b: restaurants[1], path: \.popularity)
         
         // .orderAhead restaurants are in the middle
-        assertDescending(a: restaurants[2], b: restaurants[3], path: \.sortingValues.popularity)
+        assertDescending(a: restaurants[2], b: restaurants[3], path: \.popularity)
         
         // .closed restaurants are at the end
-        assertDescending(a: restaurants[4], b: restaurants[5], path: \.sortingValues.popularity)
+        assertDescending(a: restaurants[4], b: restaurants[5], path: \.popularity)
     }
     
     func testSortingProvider_whenSortedByAveragePrice_shouldBeSortedByAveragePriceInAscendingOrder() {
@@ -126,13 +126,13 @@ final class RestaurantSortingProviderTests: XCTestCase {
         assertEqual(expected, restaurants, for: \.id)
         
         // .open restaurants are at top
-        assertAscending(a: restaurants[0], b: restaurants[1], path: \.sortingValues.averageProductPrice)
+        assertAscending(a: restaurants[0], b: restaurants[1], path: \.averageProductPrice)
         
         // .orderAhead restaurants are in the middle
-        assertAscending(a: restaurants[2], b: restaurants[3], path: \.sortingValues.averageProductPrice)
+        assertAscending(a: restaurants[2], b: restaurants[3], path: \.averageProductPrice)
         
         // .closed restaurants are at the end
-        assertAscending(a: restaurants[4], b: restaurants[5], path: \.sortingValues.averageProductPrice)
+        assertAscending(a: restaurants[4], b: restaurants[5], path: \.averageProductPrice)
     }
     
     func testSortingProvider_whenSortedByDeliveryCost_shouldBeSortedByDeliveryCostInAscendingOrder() {
@@ -144,17 +144,17 @@ final class RestaurantSortingProviderTests: XCTestCase {
         assertEqual(expected, restaurants, for: \.id)
         
         // .open restaurants are at top
-        assertAscending(a: restaurants[0], b: restaurants[1], path: \.sortingValues.deliveryCosts)
+        assertAscending(a: restaurants[0], b: restaurants[1], path: \.deliveryCosts)
         
         // .orderAhead restaurants are in the middle
-        assertAscending(a: restaurants[2], b: restaurants[3], path: \.sortingValues.deliveryCosts)
+        assertAscending(a: restaurants[2], b: restaurants[3], path: \.deliveryCosts)
         
         // .closed restaurants are at the end
-        assertAscending(a: restaurants[4], b: restaurants[5], path: \.sortingValues.deliveryCosts)
+        assertAscending(a: restaurants[4], b: restaurants[5], path: \.deliveryCosts)
     }
     
     func testSortingProvider_whenSortedByMinimumCost_shouldBeSortedByMinimumCostInAscendingOrder() {
-        let expected = ["1","2","3","4","6","5"]
+        let expected = ["1","2","4","3","6","5"]
         
         restaurants.sort(by: sortingProvider.sorter(for: .minCost))
         
@@ -162,13 +162,13 @@ final class RestaurantSortingProviderTests: XCTestCase {
         assertEqual(expected, restaurants, for: \.id)
         
         // .open restaurants are at top
-        assertAscending(a: restaurants[0], b: restaurants[1], path: \.sortingValues.minCost)
+        assertAscending(a: restaurants[0], b: restaurants[1], path: \.minCost)
         
         // .orderAhead restaurants are in the middle
-        assertAscending(a: restaurants[2], b: restaurants[3], path: \.sortingValues.minCost)
+        assertAscending(a: restaurants[2], b: restaurants[3], path: \.minCost)
         
         // .closed restaurants are at the end
-        assertAscending(a: restaurants[4], b: restaurants[5], path: \.sortingValues.minCost)
+        assertAscending(a: restaurants[4], b: restaurants[5], path: \.minCost)
     }
     
     /// Assert if the parameter a is less than or equal to parameter b for certain property
@@ -232,7 +232,7 @@ final class RestaurantSortingProviderTests: XCTestCase {
                                                                         popularity: 12.1,
                                                                         averageProductPrice: 4000,
                                                                         deliveryCosts: 0,
-                                                                        minCost: 599)
+                                                                        minCost: 899)
         let restaurant3 = Restaurant.makeRestaurant(id: "3", status: .orderAhead, sortingValues: sortingValues3)
         
         let sortingValues4 = Restaurant.SortingValues.makeSortingValues(bestMatch: 5000,
