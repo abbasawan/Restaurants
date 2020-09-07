@@ -11,11 +11,12 @@ import XCTest
 
 final class OptionPickerViewModelTests: XCTestCase {
     private var viewModel: OptionPickerViewModel!
-    
+    private var pickerOptions: [PickerOption]!
+
     override func setUp() {
         super.setUp()
-        
-        viewModel = OptionPickerViewModel(options: RestaurantSortingType.allCases)
+        pickerOptions = makePickerOptions()
+        viewModel = OptionPickerViewModel(options: pickerOptions)
     }
     
     override func tearDown() {
@@ -33,18 +34,22 @@ final class OptionPickerViewModelTests: XCTestCase {
     func testViewModel_whenRequestedNumberOfRows_shouldReturnCorrectNumberOfRows() {
         let numberOfRows = viewModel.pickerViewNumberOfRows(inComponent: 0)
         
-        XCTAssertEqual(numberOfRows, RestaurantSortingType.allCases.count)
+        XCTAssertEqual(numberOfRows, pickerOptions.count)
     }
     
     func testViewModel_whenRequestedTitleForRow_shouldReturnCorrectTitle() {
         let title = viewModel.pickerViewTitle(forRow: 0, inComponent: 0)
         
-        XCTAssertEqual(title, "Best Match".localized)
+        XCTAssertEqual(title, pickerOptions.first?.title)
     }
     
     func testViewModel_whenRequestedOptionAtIndex_shouldReturnCorrectOption() {
         let option = viewModel.option(at: 0)
         
-        XCTAssertEqual(option, .bestMatch)
+        XCTAssertEqual(option, pickerOptions.first?.optionKey)
+    }
+    
+    private func makePickerOptions() -> [PickerOption] {
+        RestaurantSortingType.allCases.map{ PickerOption(title: $0.title, optionKey: $0.rawValue) }
     }
 }

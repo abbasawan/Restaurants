@@ -131,7 +131,7 @@ final class RestaurantListViewModelTests: XCTestCase {
         }
         
         // Change the sort type
-        viewModel.didSelectSortOption(.popularity)
+        viewModel.didSelectSortOption(RestaurantSortingType.popularity.rawValue)
         
         cellViewModel1 = viewModel.cellViewModel(at: IndexPath(row: 0, section: 0))
         cellViewModel2 = viewModel.cellViewModel(at: IndexPath(row: 1, section: 0))
