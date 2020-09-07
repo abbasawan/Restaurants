@@ -13,6 +13,7 @@ final class RestaurantListTableCell: UITableViewCell {
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        // We do not need more than 2 lines at the moment
         self.detailTextLabel?.numberOfLines = 2
     }
     

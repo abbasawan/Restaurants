@@ -91,11 +91,14 @@ final class RestaurantListViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
-        let filterButton = UIBarButtonItem(title: "Sort".localized,
-                                           style: .plain,
-                                           target: self,
-                                           action: #selector(filterButtonTapped))
-        navigationItem.rightBarButtonItem = filterButton
+        navigationItem.rightBarButtonItem = makeFilterBarButton()
+    }
+    
+    private func makeFilterBarButton() -> UIBarButtonItem {
+        .init(title: "Sort".localized,
+              style: .plain,
+              target: self,
+              action: #selector(filterButtonTapped))
     }
     
     private func setupSearchController() {

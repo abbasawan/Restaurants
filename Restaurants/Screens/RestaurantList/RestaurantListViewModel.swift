@@ -20,7 +20,11 @@ final class RestaurantListViewModel {
     let screenTitle = "Restaurant List".localized
     let searchPlaceholderText = "Type Restaurant name".localized
     
-    let sortingOptionsViewModel = OptionPickerViewModel(options: RestaurantSortingType.allCases)
+    let sortingOptionsViewModel: OptionPickerViewModel = {
+        let sortTypes = RestaurantSortingType.allCases
+        let options = sortTypes.map{ PickerOption(title: $0.title, optionKey: $0.rawValue) }
+        return .init(options: options)
+    }()
     
     weak var delegate: RestaurantListViewModelDelegate?
     weak var navigationDelegate: RestaurantListViewControllerNavigationDelegate?
@@ -54,7 +58,7 @@ final class RestaurantListViewModel {
             case .success(let restaurants):
                 guard let self = self else { return }
                 self.restaurants = restaurants
-                self.didSelectSortOption(self.sortType)
+                self.didSelectSortOption(self.sortType.rawValue)
             }
         }
     }
@@ -84,7 +88,11 @@ final class RestaurantListViewModel {
         // navigationDelegate?.showDetails(for: restaurants[indexPath.row])
     }
     
-    func didSelectSortOption(_ sortType: RestaurantSortingType) {
+    func didSelectSortOption(_ sortOption: String) {
+        guard let sortType = RestaurantSortingType(rawValue: sortOption) else {
+            return
+        }
+        
         self.sortType = sortType
         restaurants.sort(by: sortingProvider.sorter(for: sortType))
         prepareCellViewModels(from: restaurants)
@@ -115,37 +123,28 @@ final class RestaurantListViewModel {
     
     private func cellSubtitleString(from restaurant: Restaurant,
                                     for sortType: RestaurantSortingType) -> String {
-        let heading: String
         let value: String
         
         switch sortType {
         case .bestMatch:
-            heading = "Best Match".localized
-            value = "\(restaurant.sortingValues.bestMatch)"
+            value = "\(restaurant.bestMatch)"
         case .newest:
-            heading = "Newest".localized
-            value = "\(restaurant.sortingValues.newest)"
+            value = "\(restaurant.newest)"
         case .ratingAverage:
-            heading = "Rating Average".localized
-            value = "\(restaurant.sortingValues.ratingAverage)"
+            value = "\(restaurant.ratingAverage)"
         case .distance:
-            heading = "Distance".localized
-            value = "\(restaurant.sortingValues.distance)"
+            value = "\(restaurant.distance)"
         case .popularity:
-            heading = "Popularity".localized
-            value = "\(restaurant.sortingValues.popularity)"
+            value = "\(restaurant.popularity)"
         case .averageProductPrice:
-            heading = "Average Price".localized
-            value = "\(restaurant.sortingValues.averageProductPrice)"
+            value = "\(restaurant.averageProductPrice)"
         case .deliveryCosts:
-            heading = "Delivery Cost".localized
-            value = "\(restaurant.sortingValues.deliveryCosts)"
+            value = "\(restaurant.deliveryCosts)"
         case .minCost:
-            heading = "Minimum Order".localized
-            value = "\(restaurant.sortingValues.minCost)"
+            value = "\(restaurant.minCost)"
         }
         
-        return restaurant.status.rawValue + "\n" + heading + ": " + value
+        return restaurant.status.rawValue + "\n" + sortType.title + ": " + value
     }
     
     /// Filter the restaurants if their name contains the search term and

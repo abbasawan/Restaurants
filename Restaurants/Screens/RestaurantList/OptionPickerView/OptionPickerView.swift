@@ -17,12 +17,14 @@ final class OptionPickerView: UIView {
     }
     
     // MARK - Public properties
-    var completion: ((RestaurantSortingType) -> Void)?
+    var completion: ((String) -> Void)?
     
     // MARK - Private properties
     private let viewModel: OptionPickerViewModel
     
     private lazy var actionBar: UIToolbar = {
+        // If we don't pass the width while creating UIToolbar, we get a warning in the debugger
+        // So we pass the screen width to make sure when toolbar is initialized, it doesn't lay warning
         let toolbarSize = CGSize(width: UIScreen.main.bounds.width,
                                  height: Constants.toolbarHeight)
         let bar = UIToolbar(frame: CGRect(origin: .zero, size: toolbarSize))

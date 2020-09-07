@@ -57,21 +57,21 @@ extension RestaurantSortingProvider: RestaurantSortingProvidable {
     func sorter(for type: RestaurantSortingType) -> RestaurantComparator {
         switch type {
         case .bestMatch:
-            return descendingSorter(for: \.sortingValues.bestMatch)
+            return descendingSorter(for: \.bestMatch)
         case .newest:
-            return descendingSorter(for: \.sortingValues.newest)
+            return descendingSorter(for: \.newest)
         case .ratingAverage:
-            return descendingSorter(for: \.sortingValues.ratingAverage)
+            return descendingSorter(for: \.ratingAverage)
         case .distance:
-            return ascendingSorter(for: \.sortingValues.distance)
+            return ascendingSorter(for: \.distance)
         case .popularity:
-            return descendingSorter(for: \.sortingValues.popularity)
+            return descendingSorter(for: \.popularity)
         case .averageProductPrice:
-            return ascendingSorter(for: \.sortingValues.averageProductPrice)
+            return ascendingSorter(for: \.averageProductPrice)
         case .deliveryCosts:
-            return ascendingSorter(for: \.sortingValues.deliveryCosts)
+            return ascendingSorter(for: \.deliveryCosts)
         case .minCost:
-            return ascendingSorter(for: \.sortingValues.minCost)
+            return ascendingSorter(for: \.minCost)
         }
     }
 }

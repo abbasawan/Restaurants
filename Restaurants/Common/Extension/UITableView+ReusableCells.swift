@@ -19,15 +19,6 @@ extension UITableView {
         cells.forEach{ register($0, forCellReuseIdentifier: $0.reuseIdentifier) }
     }
     
-    /// Register table cell nibs with the table view
-    /// - Parameters:
-    ///   - cell: Table cell class to be registered. Must have a nib with the exact same name
-    ///   - bundle: Bundle where the nib resides
-    func registerNib(_ cell: UITableViewCell.Type, bundle: Bundle? = nil) {
-        let cellNib = UINib(nibName: cell.reuseIdentifier, bundle: bundle)
-        register(cellNib, forCellReuseIdentifier: cell.reuseIdentifier)
-    }
-    
     /// Dequeue table cell for given type
     /// - Parameter indexPath: Index path for which the cell is to be dequeued
     /// - Returns: Returns the table cell of given type. If not found, the default table cell is returned

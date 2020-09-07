@@ -192,13 +192,13 @@
 		8D075DA324F47F6600AC2F9C /* RestaurantsTests */ = {
 			isa = PBXGroup;
 			children = (
-				8D73ACA525059C6A006E9932 /* OptionPickerTests */,
 				8D3B270424F48234006990A0 /* Mocks */,
 				8DCA2FC124FDA5AC0055A3C3 /* Service Tests */,
 				8D3CB86824F9B8950038A654 /* StatusSortingTests */,
 				8DFDF09924F5ADAB00179A8C /* AppCoordinatorTests */,
 				8DFDF09C24F5AFEE00179A8C /* DataProviderTests */,
 				8D3B270124F48186006990A0 /* RestaurantListTests */,
+				8D73ACA525059C6A006E9932 /* OptionPickerTests */,
 				8D075DA624F47F6600AC2F9C /* Info.plist */,
 			);
 			path = RestaurantsTests;
@@ -309,9 +309,9 @@
 			isa = PBXGroup;
 			children = (
 				8DB764D124F9C42D00188C59 /* OptionPickerView */,
+				8D075DD224F47FBE00AC2F9C /* RestaurantListTableCell */,
 				8D075DD024F47FBE00AC2F9C /* RestaurantListCoordinator.swift */,
 				8D075DD124F47FBE00AC2F9C /* RestaurantListViewControllerNavigationDelegate.swift */,
-				8D075DD224F47FBE00AC2F9C /* RestaurantListTableCell */,
 				8D075DD624F47FBE00AC2F9C /* RestaurantListViewController.swift */,
 				8D075DD724F47FBE00AC2F9C /* RestaurantListViewModel.swift */,
 				8D075DD824F47FBE00AC2F9C /* RestaurantListFactory.swift */,

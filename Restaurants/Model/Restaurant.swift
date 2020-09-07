@@ -8,11 +8,16 @@
 
 import Foundation
 
+@dynamicMemberLookup
 struct Restaurant: Codable {
     let id: String
     let name: String
     let status: Status
     let sortingValues: SortingValues
+    
+    subscript<T>(dynamicMember keyPath: KeyPath<SortingValues, T>) -> T {
+        sortingValues[keyPath: keyPath]
+    }
 }
 
 extension Restaurant {
