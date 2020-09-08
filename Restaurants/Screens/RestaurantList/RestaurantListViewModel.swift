@@ -17,6 +17,7 @@ protocol RestaurantListViewModelDelegate: class {
 final class RestaurantListViewModel {
     
     // MARK: - Public properties
+    let sortButtonTitle = "Sort".localized
     let screenTitle = "Restaurant List".localized
     let searchPlaceholderText = "Type Restaurant name".localized
     

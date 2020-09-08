@@ -64,7 +64,7 @@ final class RestaurantSortingProviderTests: XCTestCase {
     }
     
     func testSortingProvider_whenSortedByAverageRating_shouldBeSortedByAverageRatingInDescendingOrder() {
-        let expected = ["1","2","3","4","6","5"]
+        let expected = ["1","2","4","3","6","5"]
         
         restaurants.sort(by: sortingProvider.sorter(for: .ratingAverage))
         
@@ -265,6 +265,6 @@ final class RestaurantSortingProviderTests: XCTestCase {
                                                                         minCost: 899)
         let restaurant6 = Restaurant.makeRestaurant(id: "6", status: .closed, sortingValues: sortingValues6)
         
-        return [restaurant1, restaurant2, restaurant3, restaurant4, restaurant5, restaurant6]
+        return [restaurant1, restaurant4, restaurant2, restaurant6, restaurant5, restaurant3]
     }
 }

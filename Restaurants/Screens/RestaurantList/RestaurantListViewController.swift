@@ -95,7 +95,7 @@ final class RestaurantListViewController: UIViewController {
     }
     
     private func makeFilterBarButton() -> UIBarButtonItem {
-        .init(title: "Sort".localized,
+        .init(title: viewModel.sortButtonTitle,
               style: .plain,
               target: self,
               action: #selector(filterButtonTapped))
