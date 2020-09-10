@@ -9,11 +9,12 @@
 import Foundation
 @testable import Restaurants
 
-/// A class that universally converts any Encodable object to response of data request
+/// A class that universally converts any Encodable object to response type of data request
 final class DataProviderMock<U: Encodable>: DataProvidable {
     
     var result: Result<U, Error> = .failure(NetworkError.failedToLoad)
     
+    // This method will convert input type to Data, and then try to convert back to output type
     func execute<T>(request: T, completion: @escaping (Result<T.ModalType, Error>) -> Void) where T : DataRequest {
         
         switch result {

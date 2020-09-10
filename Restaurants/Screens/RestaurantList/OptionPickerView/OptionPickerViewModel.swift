@@ -8,12 +8,16 @@
 
 import UIKit
 
+/// Option for picking. Title is for showing to user and optionKey is for returning when user
+/// has finished selecting option
 struct PickerOption {
     let title: String
     let optionKey: String
 }
 
 final class OptionPickerViewModel {
+    
+    // MARK: - Private properties
     private let options: [PickerOption]
     
     // MARK: - Lifecycle
@@ -21,6 +25,7 @@ final class OptionPickerViewModel {
         self.options = options
     }
     
+    // MARK: - Public methods
     func pickerViewNumberOfComponents() -> Int {
         1
     }

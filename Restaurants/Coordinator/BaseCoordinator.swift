@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// The base coordinator helps to handle boiler plate code and helps avoid code reusability
+/// The base coordinator helps to handle boiler plate code and helps avoid code reusing
 class BaseCoordinator<T: UIViewController>: Coordinator {
     let rootViewController: T
     

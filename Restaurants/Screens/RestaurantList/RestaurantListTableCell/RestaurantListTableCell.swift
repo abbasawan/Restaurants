@@ -8,12 +8,14 @@
 
 import UIKit
 
+/// The cell that is used to display restaurant info in the table view
 final class RestaurantListTableCell: UITableViewCell {
 
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-        // We do not need more than 2 lines at the moment
+        // We do not need more than 2 lines for subtitle at the moment. The first line is for displaying
+        // restaurant status and second line is for displaying selected sorting and sorting value of restaurant
         self.detailTextLabel?.numberOfLines = 2
     }
     

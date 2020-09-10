@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// All types of sorting that are supported by our app
 enum RestaurantSortingType: String, CaseIterable {
     case bestMatch = "Best Match"
     case newest = "Newest"

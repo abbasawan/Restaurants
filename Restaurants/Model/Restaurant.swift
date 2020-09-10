@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Restaurant object represents values associated with every restaurant
 @dynamicMemberLookup
 struct Restaurant: Codable {
     let id: String
@@ -15,11 +16,14 @@ struct Restaurant: Codable {
     let status: Status
     let sortingValues: SortingValues
     
+    /// We use dynamic member lookup to look for and return sorting values related to restaurant.
+    /// This simplifies the code, makes code smaller and easier to read
     subscript<T>(dynamicMember keyPath: KeyPath<SortingValues, T>) -> T {
         sortingValues[keyPath: keyPath]
     }
 }
 
+// MARK: - Restaurant sub types
 extension Restaurant {
     enum Status: String, Codable {
         case open = "open"
@@ -39,18 +43,25 @@ extension Restaurant {
     }
 }
 
+// MARK: - Restaurant Status `Comparable` protocol implementation
 extension Restaurant.Status: Comparable {
     static func < (lhs: Restaurant.Status, rhs: Restaurant.Status) -> Bool {
         switch (lhs, rhs) {
         case (.closed, _):
+            // .closed status has the least priority, so this means .closed will be less than any other value
             return true
         case (.orderAhead, .open):
+            // .orderAhead has less priority than .open status, so we return true
             return true
         case (.orderAhead, .closed):
+            // .orderAhead has higher priority than .closed status, so we return false
             return false
         case (.open, _):
+            // .open status has the highest priority, so this means .open will be higher than any other value
             return false
         case (.orderAhead, .orderAhead):
+            // .orderAhead is actually equal to .orderAhead. We need to have this case because `switch`
+            // needs to be exhaustive. Returning both true and false here has same effect in our case.
             return true
         }
     }

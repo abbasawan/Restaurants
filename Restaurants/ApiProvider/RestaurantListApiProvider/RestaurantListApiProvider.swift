@@ -32,7 +32,6 @@ final class RestaurantListApiProvider: RestaurantListApiProvidable {
     func loadRestaurantList(completion: @escaping (Result<[Restaurant], Error>) -> Void) {
         let request = RestaurantListLocalApiRequest()
         dataProvider.execute(request: request) { result in
-            // TODO: Use sugar syntax
             switch result {
             case .success(let response):
                 completion(.success(response.restaurants))

@@ -9,14 +9,16 @@
 import UIKit
 import SnapKit
 
+/// This class shows list of restaurants, allows user filter the list by name and also sort with multiple options
 final class RestaurantListViewController: UIViewController {
+    
     // MARK: - Constants
     private struct Constants {
         static let tableViewEstimatedRowHeight: CGFloat = 65.0
     }
     
     // MARK: - Public properties
-    /// The object that acts as the navigation delegate of login view controller
+    /// The object that acts as the navigation delegate of restaurant list view controller
     public weak var navigationDelegate: RestaurantListViewControllerNavigationDelegate? {
         didSet {
             viewModel.navigationDelegate = navigationDelegate
@@ -53,13 +55,13 @@ final class RestaurantListViewController: UIViewController {
     }()
     
     // MARK: - Lifecycle
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     init(viewModel: RestaurantListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -76,6 +78,7 @@ final class RestaurantListViewController: UIViewController {
         
         setupNavigationBar()
         
+        // Pass the selected sort option to the view model
         filterOptionPicker.completion = { [weak self] option in
             self?.filterOptionPicker.isHidden = true
             self?.viewModel.didSelectSortOption(option)
@@ -152,16 +155,19 @@ extension RestaurantListViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - RestaurantListViewModel delegate methods
 extension RestaurantListViewController: RestaurantListViewModelDelegate {
     func shouldReloadData() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
+            // To make sure that the reload of data happens with smooth animation, we use begin and end updates
             self?.tableView.beginUpdates()
             self?.tableView.endUpdates()
         }
     }
 }
 
+// MARK: - UISearchResultsUpdating methods
 extension RestaurantListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         viewModel.didChangeSearchBarText(searchController.searchBar.text)

@@ -51,13 +51,16 @@ final class RestaurantListViewModel {
     }
     
     // MARK: - Public methods
+    /// When view is loaded, we need to request list of restaurants.
+    /// If the data loading is successful, ask to reload data, otherwise ask to show error.
     func viewDidLoad() {
         apiProvider.loadRestaurantList { [weak self] (result) in
+            guard let self = self else { return }
+
             switch result {
             case .failure(let error):
-                self?.navigationDelegate?.show(error)
+                self.navigationDelegate?.show(error)
             case .success(let restaurants):
-                guard let self = self else { return }
                 self.restaurants = restaurants
                 self.didSelectSortOption(self.sortType.rawValue)
             }
@@ -85,7 +88,9 @@ final class RestaurantListViewModel {
     }
     
     func didSelectRow(at indexPath: IndexPath) {
-        // TODO: Show details
+        // Future implementation: Show details for selected restaurant.
+        // We pass the selected restaurant to navigation delegate, which should then start
+        // restaurant detail flow using designated coordinator
         // navigationDelegate?.showDetails(for: restaurants[indexPath.row])
     }
     
@@ -95,7 +100,11 @@ final class RestaurantListViewModel {
         }
         
         self.sortType = sortType
+        
+        // Sort the restaurant list based on selected sort type
         restaurants.sort(by: sortingProvider.sorter(for: sortType))
+        
+        // Prepare table cell view models for newly sorted restaurants list
         prepareCellViewModels(from: restaurants)
     }
     
@@ -115,13 +124,19 @@ final class RestaurantListViewModel {
     }
     
     /// Creates and returns cell view model from a restaurant object
-    /// - Parameter restaurant: restaurant object from which to create cell view model
+    /// - Parameter restaurant: Restaurant object from which to create cell view model
     /// - Returns: Cell view model to be displayed in the list
     private func makeCellViewModel(with restaurant: Restaurant) -> RestaurantListTableCellViewModel {
         .init(title: restaurant.name,
               subtitle: cellSubtitleString(from: restaurant, for: sortType))
     }
     
+    /// Returns subtitle string for the table cell. It contains 2 lines: first line contains
+    /// restaurant status and second line shows selected sorting and sort value for the restaurant
+    /// - Parameters:
+    ///   - restaurant: Restaurant which we need to show info for
+    ///   - sortType: Sort type to help pick which sort value of restaurant to use
+    /// - Returns: 2 lines string which shows restaurant status and sort info
     private func cellSubtitleString(from restaurant: Restaurant,
                                     for sortType: RestaurantSortingType) -> String {
         let value: String

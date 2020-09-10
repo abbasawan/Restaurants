@@ -175,10 +175,10 @@
 		8D075D8C24F47F6500AC2F9C /* Restaurants */ = {
 			isa = PBXGroup;
 			children = (
-				8DDA653124FBAAE90033C4F5 /* Services */,
 				8D075DB324F47FBD00AC2F9C /* Application */,
 				8D075DBF24F47FBE00AC2F9C /* Common */,
 				8D075DBC24F47FBE00AC2F9C /* Coordinator */,
+				8DDA653124FBAAE90033C4F5 /* Services */,
 				8D075DB824F47FBE00AC2F9C /* ApiProvider */,
 				8D075DAF24F47FBD00AC2F9C /* DataProvider */,
 				8D075DCB24F47FBE00AC2F9C /* Model */,
@@ -207,9 +207,9 @@
 		8D075DAF24F47FBD00AC2F9C /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
+				8D075DB224F47FBD00AC2F9C /* DataRequest.swift */,
 				8D075DB024F47FBD00AC2F9C /* DataProvidable.swift */,
 				8D075DB124F47FBD00AC2F9C /* LocalDataProvider.swift */,
-				8D075DB224F47FBD00AC2F9C /* DataRequest.swift */,
 			);
 			path = DataProvider;
 			sourceTree = "<group>";
@@ -235,8 +235,8 @@
 		8D075DB924F47FBE00AC2F9C /* RestaurantListApiProvider */ = {
 			isa = PBXGroup;
 			children = (
-				8D075DBA24F47FBE00AC2F9C /* RestaurantListApiProvider.swift */,
 				8D075DBB24F47FBE00AC2F9C /* RestaurantListLocalApiRequest.swift */,
+				8D075DBA24F47FBE00AC2F9C /* RestaurantListApiProvider.swift */,
 			);
 			path = RestaurantListApiProvider;
 			sourceTree = "<group>";
@@ -244,8 +244,8 @@
 		8D075DBC24F47FBE00AC2F9C /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				8D075DBD24F47FBE00AC2F9C /* BaseCoordinator.swift */,
 				8D075DBE24F47FBE00AC2F9C /* Coordinator.swift */,
+				8D075DBD24F47FBE00AC2F9C /* BaseCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -264,9 +264,9 @@
 			children = (
 				8D075DC124F47FBE00AC2F9C /* UIColor+Takeaway.swift */,
 				8D075DC224F47FBE00AC2F9C /* ReuseIdentifiable.swift */,
+				8D075DC524F47FBE00AC2F9C /* UITableView+ReusableCells.swift */,
 				8D075DC324F47FBE00AC2F9C /* UIViewController+ShowError.swift */,
 				8D075DC424F47FBE00AC2F9C /* String+Util.swift */,
-				8D075DC524F47FBE00AC2F9C /* UITableView+ReusableCells.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";

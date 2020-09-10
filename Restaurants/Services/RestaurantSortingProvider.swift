@@ -20,7 +20,7 @@ protocol RestaurantSortingProvidable {
     func sorter(for type: RestaurantSortingType) -> RestaurantComparator
 }
 
-/// This class implements `RestaurantSortingProvidable` protocol and return sorting
+/// This class implements `RestaurantSortingProvidable` protocol and returns sorting
 /// function for the restaurants
 final class RestaurantSortingProvider {
     
@@ -63,10 +63,15 @@ final class RestaurantSortingProvider {
     private func compare<T: Comparable>(a: (status: Restaurant.Status, sortingValue: T),
                                         b: (status: Restaurant.Status, sortingValue: T),
                                         comparator: (T, T) -> Bool) -> Bool {
+        // If both restaurants have same status, we need to compare their sort values and return the result
         if a.status == b.status {
             return comparator(a.sortingValue, b.sortingValue)
         }
         
+        // If restaurants have different status, we need to compare the status and return the result.
+        // Here we only compare the restaurant status and not the sortingValue because restaurant status
+        // takes precedence over sortingValues during sorting.
+        // The rank of status is like this: .open > .orderAhead > . closed
         return a.status > b.status
     }
 }

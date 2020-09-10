@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 
+/// This class helps user pick an option from list of given options
 final class OptionPickerView: UIView {
     
     // MARK - Enums and Constants
@@ -23,8 +24,8 @@ final class OptionPickerView: UIView {
     private let viewModel: OptionPickerViewModel
     
     private lazy var actionBar: UIToolbar = {
-        // If we don't pass the width while creating UIToolbar, we get a warning in the debugger
-        // So we pass the screen width to make sure when toolbar is initialized, it doesn't lay warning
+        // If we don't pass the width while creating UIToolbar, we get a warning in the debugger.
+        // So we pass the screen width to make sure when toolbar is initialized, it doesn't lay warning.
         let toolbarSize = CGSize(width: UIScreen.main.bounds.width,
                                  height: Constants.toolbarHeight)
         let bar = UIToolbar(frame: CGRect(origin: .zero, size: toolbarSize))
@@ -36,9 +37,9 @@ final class OptionPickerView: UIView {
             make.top.equalToSuperview()
         }
         
-        let buffer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let padding = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
-        bar.setItems([buffer, doneButton], animated: false)
+        bar.setItems([padding, doneButton], animated: false)
         
         bar.backgroundColor = .red
         return bar
@@ -71,14 +72,15 @@ final class OptionPickerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK - Private functions
+    // MARK - Private methods
     private func setup() {
         self.backgroundColor = .gray
         self.pickerView.dataSource = self
     }
     
     @objc private func doneButtonTapped() {
-        completion?(viewModel.option(at: pickerView.selectedRow(inComponent: 0)))
+        let selectedOption = viewModel.option(at: pickerView.selectedRow(inComponent: 0))
+        completion?(selectedOption)
     }
 }
 

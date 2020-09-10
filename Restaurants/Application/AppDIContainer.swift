@@ -13,7 +13,7 @@ final class AppDIContainer {
     // MARK: - Public properties
     static let shared = AppDIContainer()
     
-    // MARK: - Public properties
+    // MARK: - Private properties
     private let container = Container()
     
     // MARK: - Lifecycle
@@ -23,10 +23,12 @@ final class AppDIContainer {
         registerDependancies()
     }
     
+    // MARK: - Public methods
     func restaurantListApiProvider() -> RestaurantListApiProvider {
         container.resolve(RestaurantListApiProvider.self)!
     }
     
+    // MARK: - Private methods
     private func registerDependancies() {
         container.register(RestaurantListApiProvider.self) { _ in
             RestaurantListApiProvider(dataProvider: LocalDataProvider())

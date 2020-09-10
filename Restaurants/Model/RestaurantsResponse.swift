@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// The response model that is returned by restaurant list Api
 struct RestaurantsResponse: Codable {
     let restaurants: [Restaurant]
 }
