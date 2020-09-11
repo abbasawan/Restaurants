@@ -105,7 +105,7 @@ final class RestaurantListViewController: UIViewController {
     }
     
     private func setupSearchController() {
-        let searchController = UISearchController()
+        let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = viewModel.searchPlaceholderText
