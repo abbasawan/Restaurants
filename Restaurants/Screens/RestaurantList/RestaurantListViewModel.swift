@@ -76,7 +76,7 @@ final class RestaurantListViewModel {
     }
     
     func numberOfRows(in section: Int) -> Int {
-        return cellViewModels.count
+        cellViewModels.count
     }
     
     func cellViewModel(at indexPath: IndexPath) -> RestaurantListTableCellViewModel? {
